@@ -19,7 +19,7 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Chris's Blog
-email: chrisly.zhang@outlook.com
+
 description: >- # this means to ignore newlines until "baseurl:"
 
 baseurl: "" # the subpath of your site, e.g. /blog
@@ -28,13 +28,19 @@ url: "https://chrislyz.github.io" # the base hostname & protocol for your site, 
 github_username:  chrislyz
 
 # Build settings
-theme: minima
+#theme: beautiful-jekyll-theme
+remote_theme: daattali/beautiful-jekyll@6.0.1
 plugins:
   - jekyll-feed
 
 markdown: kramdown
 kramdown:
     input: GFM
+
+social-network-links:
+  email: chrisly.zhang@outlook.com
+  github: chrislyz
+  
 
 # Exclude from processing.
 # The following items will not be processed, by default.

@@ -7,9 +7,10 @@ title: "Single-precision Floating-point Numbers"
 
 Single-precision floating-point format is also known as FP32 or float32, since it occupies 32 bits in memory.
 
-> [!info] Prior Knowledge
+> Prior Knowledge
 > Scientific notation for decimal numbers is straightforward, where nonzero numbers are written as $m \times 10^n$.
-> Similarly, binary numbers with base $2$ are written as $m_b \times 2_d^{n_d}$, where $m_b$ is the coefficient of binary base, $n_d$ is the exponential digits of decimal base. For example, $(0.0001\ 1011)_2$ is written as $(1.1011)_2 \times (2_{10})^{4_{10}}$ in scientific notation.
+>
+> Similarly, binary numbers with base $2$ are written as $m\_b \times 2\_d^{n_d}$, where $m_b$ is the coefficient of binary base, $n_d$ is the exponential digits of decimal base. For example, $(0.0001\ 1011)\_2$ is written as $(1.1011)\_2 \times (2\_{10})^{4\_{10}}$ in scientific notation.
 
 ### Composition
 
@@ -27,16 +28,16 @@ FP32 is composed by
 > For the exponent part, offset by 127 naturally centers the mean of zero, so that all bits zero just represent 0.
 > For the fraction part, engineers found about that a leading 1 always appears in the scientific notation for nonzero exponents. As a result, they decided to save 1 bit for implicitly adding 1 to the fraction part and name this as **leading bit convention**.
 
-![[Pasted image 20230727115116.png]]
+![image]({{site.baseurl}}/assets/media/Pasted image 20230727115116.png)
 
 FP32 is calculated in decimal by,
 $$
-\begin{align}
-\text{value} &= \underbrace{(-1)^{b_{31}}\vphantom{\sum_j}}_{sign} \times \underbrace{\left(\text{pow}\left(2,(\sum_{i=23}^{30}b_i^{(i-23)}-127)\right)\right)\vphantom{\sum_j}}_{exponent} \times \underbrace{\left(1+\sum_{j=22}^{0} b_j^{-(23-j)}\right)}_{fraction}\\
+\begin{align*}
+\text{value} &= \underbrace{(-1)^{b_{31}}\vphantom{\sum_j}}_{sign} \times \underbrace{\left(\text{pow}\left(2,(\sum_{i=23}^{30}b_i^{(i-23)}-127)\right)\right)\vphantom{\sum_j}}_{exponent} \times \underbrace{\left(1+\sum_{j=22}^{0} b_j^{-(23-j)}\right)}_{fraction}\\[3ex]
     &= (-1) \times \text{pow}(2,124-127) \times 1.25\\
     &= -1 \times 0.125 \times 1.25\\
     &= 0.156250
-\end{align}
+\end{align*}
 $$
 
 ### Possible Implementation
