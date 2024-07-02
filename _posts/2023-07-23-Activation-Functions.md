@@ -2,9 +2,11 @@
 layout: post
 ---
 
-In the context of perceptron models, the activation function normally refers to a thresholding function that activates an neuron given specific input. As for deep neural networks, the activation function is a nonlinear (and differentiable if applying gradient-based optimization) function that extends nonlinearity to the neural network across hidden layers, and hence a network is able to approximate complex functions.
+[[Updated on 07-02-2024: add a few new functions in ReLU family]](#silu)
 
-## TOC
+{:toc}
+
+In the context of perceptron models, the activation function normally refers to a thresholding function that activates an neuron given specific input. As for deep neural networks, the activation function is a nonlinear (and differentiable if applying gradient-based optimization) function that extends nonlinearity to the neural network across hidden layers, and hence a network is able to approximate complex functions.
 
 
 
@@ -155,8 +157,57 @@ $$
 \end{cases}
 $$
 
-
 ![]({{site.baseurl}}/assets/media/Pasted image 20230801110514.png)
+
+### SiLU
+
+Sigmoid Linear Unit, or SiLU, is computed by the sigmoid function multiplied by its input.
+
+$$
+\mathrm{SiLU}=x\sigma(x)
+$$
+
+![]({{site.baseurl}}/assets/media/SiLU.png)
+### SELU
+
+Scaled Exponential Linear Unit, or SELU, includes self-normalizing properties and it is defined by,
+
+$$
+\mathrm{SELU}=
+\begin{cases}
+\lambda x, & \text{if } x \ge 0\\
+\lambda\alpha (\exp(x)-1), & \text{otherwise}
+\end{cases}
+$$
+
+where $\alpha \approx 1.6733$ and $\lambda \approx 1.0507$.
+
+![]({{site.baseurl}}/assets/media/SELU.png)
+
+### GELU
+
+Gaussian Error Linear Unit, or GELU, is computed by $x\Phi(x)$, where $\Phi(x)$ is the standard Gaussian cumulative distribution function (CDF). GELU alleviates vanishing gradients by weighting inputs with their percentile rather than simply gating inputs by their sign as in ReLU.
+
+$$
+\mathrm{GELU}(x)= xP(X\le x) = x\Phi(x) = x\cdot \frac{1}{2}\left[1+\mathrm{erf}(x/\sqrt{2})\right],
+$$
+
+where $X \sim \mathcal{N}(0,1)$.
+
+> [!note]
+> GELU can be approximated with,
+>  - $0.5x\left(1+\tanh\left[\sqrt{2\pi}(x+0.44715x^3)\right]\right)$,
+>  - $x\sigma(1.702x)$, where $x\sigma(x)$ is SiLU.
+
+![]({{site.baseurl}}/assets/media/GELU.png)
+
+
+
+### Summary
+
+![]({{site.baseurl}}/assets/media/ReLUs.png)
+
+
 
 ## Sigmoidal Functions
 
@@ -384,3 +435,12 @@ In contrast to the [[#Vanishing Gradient]] problem, the exploding gradient probl
 A dying ReLU problem normally refers to the model, $b^{(L)} >\\!\\!> \sum w^{(L)}z^{(L-1)}$, which learned a large bias resulting in a negative output, $z^{(L)} < 0$. Additionally, ReLU function maps the negative value to 0. As a result, that neuron dies and always output the same value 0.
 
 [A more comprehensive answer](https://datascience.stackexchange.com/a/5734)
+
+
+
+## Appendix
+
+The plots are available with `numpy` and `matplotlib`.
+
+{% gist b9b97bba57caa3c7128ea91981d662ba %}
+
