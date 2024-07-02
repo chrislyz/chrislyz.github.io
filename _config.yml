@@ -19,6 +19,15 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Chris's Blog
+# title-img: assets/img/avatar.png
+author: Chris Zhang
+
+navbar-links:
+  About me: "about"
+
+navbar-img: "/assets/img/banner.jpg"
+
+avatar: "/assets/img/avatar-icon.png"
 
 description: >- # this means to ignore newlines until "baseurl:"
 
@@ -63,4 +72,4 @@ social-network-links:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
-paginate: 5
+paginate: 10
