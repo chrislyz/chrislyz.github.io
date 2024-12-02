@@ -85,7 +85,7 @@ for data in SOME_DATA_LOADER:
 
 DP automatically splits data and sends jobs to multiple models, that is replicated on several GPUs. It finalizes the communication by collecting and merging the results before actual returning. The following manual drawing chart demonstrates how DP is executed via PyTorch.
 
-![[Pasted image 20241107153043.png]]
+![image]({{site.baseurl}}/assets/media/ddp_demo.png)
 
 > by [Sebastian Raschka](https://x.com/rasbt/status/1570442488334397440)
 
@@ -377,7 +377,7 @@ As noted in the first section, DP requires replicating the model on each device,
 
 MP splits the model vertically (i.e., across multiple layers), partitioning the computation and parameters in each layer across multiple devices, requiring significant communication between each layer [4]. It can be seen that, due to the high bandwidth of inter-GPU communication within a single node, data moved back and forth across GPUs in parallel do not compromise the performance (i.e., the [memory overhead](https://developer.nvidia.com/blog/understanding-the-visualization-of-overhead-and-latency-in-nsight-systems/#overhead) is hidden by fast inter-GPU communication) but speed up the collective process instead. However, the degradation comes up when scaling nodes. The constraint of this parallelism mainly lies in the inefficient communication between multi-nodes. In a brief, compared to DP, MP partitioning the parameter does obtain high memory efficiency, but it is less scaling efficient.
 
-![[Pasted image 20241107153506.png]]
+![image]({{site.baseurl}}/assets/media/dp_vs_mp.png)
 
 > by [https://docs.chainer.org/en/v7.8.0/_images/parallelism.png…](https://t.co/JsXK6tOrYG)
 
@@ -408,7 +408,7 @@ class ModelParallelModel(nn.Module):
 
 Tensor parallelism is a further fine-grained parallelism used to fit a large model into multiple GPUs.
 
-![[Tensor Parallel.png]]
+![image]({{site.baseurl}}/assets/media/tensor_parallel.png)
 
 Take one MLP block within transformers as example. It only contains a nonlinearity GeLU function after a GEMM of $XA$.
 
@@ -439,7 +439,7 @@ Pipeline Parallelism (PP) horizontally splits the model across layers running ea
 > [!note]
 > Model parallel requires copying data back and forth across GPUs, so that overhead exists. One improved implementation would be pipelining, as in once the `seq1` finishes the computation and finalizes the data movement, it can start with the second micro-batch.
 
-![[Pasted image 20241107153855.png]]
+![image]({{site.baseurl}}/assets/media/pipeline_parallel.png)
 
 > by [https://fairscale.readthedocs.io/en/latest/_images/pipe.png…](https://t.co/LHMUUK1rfJ)
 
@@ -473,7 +473,7 @@ class PipelineParallelModel(ModelParallelModel):
 ```
 
 > [!quote] Comparison between two model parallel strategies.
-> ![[Pasted image 20240703145522.png]]
+> ![image]({{site.baseurl}}/assets/media/tp_vs_pp.png)
 
 ## Fully Sharded Data Parallel
 
