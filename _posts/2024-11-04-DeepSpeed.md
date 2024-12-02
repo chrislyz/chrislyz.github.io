@@ -44,7 +44,7 @@ if __name__ == "__main__":
 # Rank 3 has data tensor(1.)
 ```
 
-![[Pasted image 20241107174116.png]]
+![image]({{site.baseurl}}/assets/media/dp_p2p_comm.png)
 
 On the contrary, `isend` and `irecv` are asynchronous, as saying that both functions will not be executed directly but scheduled by a scheduler instead. Hence, any writing to `tensor` after `isend` or reading from `tensor` after `dist.irecv` before `req.wait()` has completed will result in undefined behavior.
 
@@ -73,16 +73,20 @@ Collective communication is a paradigm that allows all processes in a group to c
 
 Collective communication consists six primitives in three categories. The first category only involves copying data from process(es) to process(es) such as `scatter()`, `broadcast()`, `gather()` and `all_gather()`. Although `scatter()` and `broadcast` both do copy, `scatter()` copies $i$th tensor in the list to the $i$th process, whereas `broadcast` copies tensor from source process to all other processes. `gather()`, on the other hand, copies tensor from all processes to destination process. At last, `all_gather()` gathers around and goes to all processes.
 
-![[scatter.png|350]]![[broadcast.png|350]]
-![[gather.png|350]]![[all_gather.png|350]]
+![image]({{site.baseurl}}/assets/media/scatter.png)
+
+![image]({{site.baseurl}}/assets/media/broadcast.png)
+![image]({{site.baseurl}}/assets/media/gather.png)
+
+![image]({{site.baseurl}}/assets/media/all_gather.png)
 
 The second category involves executing applying a specific operator to every tensor in all processes and stores the result in destination process such as `reduce()`.
 
-![[reduce.png]]
+![image]({{site.baseurl}}/assets/media/reduce.png)
 
 The last category involves the combination of the first and second category. `all_reduce()` first applies a specific operator to every tensor in all processes and then copies results back to all processes.
 
-![[all_reduce.png]]
+![image]({{site.baseurl}}/assets/media/all_reduce.png)
 
 In addition to above primitives, there are also a synchronization primitive `barrier()` that blocks all process in the group until each one has entered this function, and `all_to_all()` that scatters list of input tensors to all processes and return gathered list of tensors in output list.
 
@@ -118,7 +122,7 @@ ZeRO-DP has three main optimization stages, corresponding to the partitioning of
 
 Let us verify each stage step-by-step. Supposing there is a distributed training system comprised of $N$ devices, i.e., a DP degree of $N_d$, to train a large model of the size $\Psi$ billion parameters with well-known ADAM optimizer. The mixed precision training with Adam optimizer occupies $2\Psi$ and $2\Psi$ bytes to hold an $fp16$ copy of the parameters and the gradients, leading to $4\Psi$ memory consumption in total. Besides, it also needs to hold the optimizer states in high-precision, i.e., an $fp32$ copy of the *parameters, first momentum and variance*, with memory requirements of $4\Psi$, $4\Psi$, and $4\Psi$ bytes, respectively. Using $K$ to denote the memory multiplier of optimizer states, then we have $K\Psi$ bytes occupied for optimizer states on demand, resulting $4\Psi+K\Psi$ memory usage in total.
 
-![[deepspeed_1.png]]
+![image]({{site.baseurl}}/assets/media/deepspeed_1.png)
 
 #### ZeRO-1 Optimizer State Partitioning
 
