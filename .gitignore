@@ -8,3 +8,5 @@ assets/jsconfig.json
 
 # Ingore temporary lock while building
 .hugo_build.lock
+
+go.sum
