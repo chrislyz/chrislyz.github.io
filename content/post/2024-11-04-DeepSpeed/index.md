@@ -327,7 +327,7 @@ Note, each sample configuration for different ZeRO stages is mutual exclusive, a
 }
 ```
 
-##### ZeRO-Offload
+#### ZeRO-Offload
 
 ```json
 {

@@ -22,3 +22,11 @@ url = "https://twitter.com"
 
 [social.params]
 icon = "brand-twitter"
+
+[[social]]
+identifier = "resume"
+name = "Resume"
+url = "https://resume.com"
+
+[social.params]
+icon = "user"

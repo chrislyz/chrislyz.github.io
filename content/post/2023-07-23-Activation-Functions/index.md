@@ -436,5 +436,5 @@ A dying ReLU problem normally refers to the model, $b^{(L)} >\\!\\!> \sum w^{(L)
 
 The plots are available with `numpy` and `matplotlib`.
 
-{% gist b9b97bba57caa3c7128ea91981d662ba %}
+{{< gist chrislyz b9b97bba57caa3c7128ea91981d662ba >}}
 
