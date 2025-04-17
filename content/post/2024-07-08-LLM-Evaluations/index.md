@@ -123,7 +123,8 @@ ppl = torch.exp(torch.stack(nlls),.mean())
 
 ### BLEU
 
-The Bilingual Evaluation Understudy (BLEU) measures similarity (or quality) between the machine-translated text and human-labeled reference based on n-gram overlap. BLEU often evaluates the model in machine translation tasks.
+The Bilingual Evaluation Understudy (BLEU) measures similarity (or quality) between 
+the response and reference based on n-gram overlap. It was previously designed to evaluate the machine-translated text and human-labeled reference, while it has been widely used to evaluate summary tasks.
 
 #### Modified N-gram Precision
 

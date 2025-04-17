@@ -51,13 +51,13 @@ trainer.train()
 
 The conditional full fine-tuning method is often costly due to 100% trainable parameters being fine-tuned. Parameter-efficient Fine-tuning methods are thus introduced to mitigate the inefficiency by only adjusting a small subset of the model parameters, leaving the rest frozen. At the meantime, recent state-of-the-art PEFT methods achieve performance comparable to fully fine-tuned models.
 
-![](peft.png)
+<img src="peft.png" style="zoom:67%;" />
 
 ### Prompt-Tuning
 
 The essence of **Prompt Tuning** is learning a "soft prompts" (i.e., a learnable tensor) to condition frozen language models to perform specific downstream tasks. The input thereby becomes the concatenation of a prompt tensor and an input text embedding. In short, prompt tuning prepends a trainable prompt tensor to the input text embedding.
 
-![](prompt_tuning.png)
+<img src="prompt_tuning.png" style="zoom:67%;" />
 
 #### HuggingFace PEFT
 
@@ -79,7 +79,7 @@ model = get_peft_model(model, peft_config)
 
 Prefix Tuning, by keeping language model parameters frozen and instead optimizes a sequence of continuous task-specific (also called as *prefix* in the paper) vectors. As demonstrated in the figure below, prefix tuning adapts to prompting techniques with learnable prefix so that different prefix helps model differentiate various downstream tasks without fine tuning all of model parameters at once.
 
-![](prefix_tuning.png)
+<img src="prefix_tuning.png" style="zoom:67%;" />
 
 #### HuggingFace PEFT
 
@@ -160,7 +160,7 @@ Another advantage of LoRA is that it trains on the residual matrix, so that it k
 
 The Adapter yields a compact and extensible module (or layers) to the existing model. The adapter module adds only a few trainable parameters per task, while parameters of a pre-trained model remain frozen.
 
-![](adapter_tuning.png)
+<img src="adapter_tuning.png" style="zoom:67%;" />
 
 The placement of Adapters is preferred on the higher layer, as adapters on the lower layer may capture more of low-level features shared among tasks, while they extract high-level unique features that differentiates tasks. Although adapter tuning reduces the number of model parameters required to fine-tune, the size of model is unavoidably increased due to additional layers introduced as adapters.
 
@@ -176,7 +176,7 @@ Instruction Fine-Tuning (IFT) is yet another supervised fine-tuning method, whic
 
 IFT has been a successful fine-tuning method, particularly for the **multi-task learning and zero-shot learning scenario**, because of its combination of appealing aspects of both the pretrain-finetune and prompting paradigms (demonstrated in fig 2). Meanwhile, it alleviate the necessity of prompt engineering and few-shot exemplars to help LLMs recognize and shift among tasks.
 
-![](ift_comparison.png)
+<img src="ift_comparison.png" style="zoom:67%;" />
 
 A general format for IFT is 
 
@@ -200,11 +200,11 @@ A general format for IFT is
 
 FLAN (Finetuned Language Net) is instruction fine-tuned on a mixture (shown in fig 3) of more than 60 NLP datasets.
 
-![](flan_dataset.png)
+<img src="flan_dataset.png" style="zoom:67%;" />
 
 As creating instruction for all 60 datasets would cost tremendous resources, FLAN manually compose 10 templates describing each existing dataset and extra 3 templates with another possible task descriptions. Take datasets *RTE* and *WSC* for example, defined templates are listed in the following,
 
-![](flan_template_examples.png)
+<img src="flan_template_examples.png" style="zoom:67%;" />
 
 ### LLM-Generated Instruction Datasets
 
@@ -212,11 +212,11 @@ With the increasing prevalence of synthetic augmentation and the challenges asso
 
 Alpaca prompted a strong LLM, i.e., OpenAI's ChatGPT model, to generate 52K instruction following demonstrations based on 175 human-written instruction-output exemplars. You can learn more about [Alpaca's Datasets](https://github.com/tatsu-lab/stanford_alpaca/blob/main/datasheet.md).
 
-![](alpaca_pipeline.png)
+<img src="alpaca_pipeline.png" style="zoom:67%;" />
 
 Self-Instruct applies an iterative method that iterates over LLM-generated instructions and adds to datasets only if their ROGUE-L similarity with any existing instruction is less than 0.7 for the purpose of diversity.
 
-![](self_instruct_pipeline.png)
+<img src="self_instruct_pipeline.png" style="zoom:67%;" />
 
 [^2]: Y. Wang _et al._, “Self-Instruct: Aligning Language Models with Self-Generated Instructions,” in _Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)_, A. Rogers, J. Boyd-Graber, and N. Okazaki, Eds., Toronto, Canada: Association for Computational Linguistics, Jul. 2023, pp. 13484–13508. doi: [10.18653/v1/2023.acl-long.754](https://doi.org/10.18653/v1/2023.acl-long.754).
 [^3]: Rohan Taori _et al._, “Alpaca: A Strong, Replicable Instruction-Following Model.” Accessed: Aug. 19, 2024. [Online]. Available: [https://crfm.stanford.edu/2023/03/13/alpaca.html](https://crfm.stanford.edu/2023/03/13/alpaca.html)
@@ -231,7 +231,7 @@ Reinforcement Learning from Human Feedback (RLHF) is an approach of optimizing l
 2. Collect comparison data, and train a reward model,
 3. Optimize a policy against the reward model using reinforcement learning.
 
-![](RLHF.png)
+<img src="RLHF.png" style="zoom:67%;" />
 
 ### Prepare Dataset
 
