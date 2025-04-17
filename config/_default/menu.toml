@@ -26,7 +26,7 @@ icon = "brand-twitter"
 [[social]]
 identifier = "resume"
 name = "Resume"
-url = "https://resume.com"
+url = "https://chrislyz.github.io/files/resume.pdf"
 
 [social.params]
 icon = "user"
