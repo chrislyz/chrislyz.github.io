@@ -56,7 +56,7 @@ Ridge functions are multivariate functions acting on a linear combination of inp
 - Heaviside (Unit Step Function)
 - Sigmoid (or Logistic)
 
-##### Radial Based Functions (or RBF)
+#### Radial Based Functions (or RBF)
 
 Radial functions
 
@@ -82,7 +82,7 @@ $$
 - Sigmoidal functions
 - Hyperbolic tangent functions
 
-Saturating functions are mostly likely to suffer from [[#Vanishing Gradient]] problem.
+Saturating functions are mostly likely to suffer from [Vanishing Gradient](#vanishing-gradient) problem.
 
 > [!note]
 > In the following contexts, saturating functions are specifically referring to activation functions that are saturating functions.
@@ -343,9 +343,8 @@ Applies Softmax over features to each spatial location.
 
 ### Vanishing Gradient
 
-The vanishing gradient problem is most likely to occur to the gradient based method with a [[#Saturating Functions|saturating activation function]]. 
+The vanishing gradient problem is most likely to occur to the gradient based method with a [saturating function](#saturating-functions). 
 The output of a deep feedforward neural network in an arbitrary layer is a combination of function composition, i.e.,
-
 
 $$
 \begin{align}

@@ -48,7 +48,7 @@ RNN extends the idea of parameter sharing across different parts of a model whic
 
 Consider the classical dynamic system, we have
 
-![]({{site.baseurl}}/assets/media/Pasted image 20230925120515.png)
+![](rnn_1.png)
 
 
 $$
@@ -59,7 +59,7 @@ $$
 
 Similarly, each member of the output in RNN is a function of the previous member of the output, except that RNN also accepts external inputs, i.e.,
 
-![]({{site.baseurl}}/assets/media/Pasted image 20230925160528.png)
+![](rnn_2.png)
 
 
 $$
@@ -79,7 +79,7 @@ where $h^{(t)}$ is the hidden unit at time $t$, and $x^{(t)}$ is the external in
 
 The unfolded computational graph (on the right) shows that RNN produces an output $\mathbf{o}^{(t)}$ at each time $t$. The loss $L$ computes $\mathbf{\hat{y}}=\mathrm{softmax}(\mathbf{o})$ and compares this to the target $\mathbf{y}$. RNN has three important parameter matrices: hidden-to-hidden recurrent connections $W$, input-to-hidden connections $U$ and hidden-to-output connections $V$.
 
-![]({{site.baseurl}}/assets/media/Pasted image 20230925161147.png)
+![](rnn_3.png)
 
 ### Forward propagation
 

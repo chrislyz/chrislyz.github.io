@@ -90,7 +90,7 @@ Perplexity (PPL) is a measure of the likelihood of a model to generate the input
 
 $$
 \mathrm{PPL(X)} = \exp\left\{-\frac{1}{t}\sum_i^t\log p_\theta(x_i 
-\vert x_{<i})\right\}
+\vert x_{\lt i})\right\}
 $$
 
 A model of perplexity being 1 means that it is $100\%$ confident about the next token predicted or generated. The increasing PPL suggests that the model have PPL many options at each time steps on average, thus showing the level of uncertainty.

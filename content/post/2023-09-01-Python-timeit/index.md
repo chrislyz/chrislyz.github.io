@@ -214,25 +214,17 @@ Time multi-line statements. the first line is used as setup statements, and the 
      ...: %timeit -n1 time.sleep(2)
   #-----------------------------------------------------------------
   1.01 s ± 5.91 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
-  ```
-
-
-  #-----------------------------------------------------------------
-
   # The following code snippets represent a single code cell iPython
-
   # Code cell 2
-
-  ```python
   In [2]: %%timeit
      ...: import time
      ...: for _ in range(100):
      ...:    time.sleep(0.01)  # sleep 1 second in total
   #-----------------------------------------------------------------
   1.52 s ± 4.6 ms per loop (mean ± std. dev. of 7 runs, 1 loop each)
-
+  
   ```
 ## Reference
 - [1] [IPython official documentation](https://ipython.readthedocs.io/en/stable/interactive/magics.html)
 - [2] [Python official documentation](https://docs.python.org/3/library/timeit.html)
-  ```
+

@@ -1,6 +1,7 @@
 ---
 title: Python Decorators
 date: 2023-09-07
+math: true
 ---
 
 ## Function/Method Decorators

@@ -148,8 +148,7 @@ MCP is composed by several important components:
 - **Local Data Source** are files or databases that servers can access and expose;
 - **Remote Service** are resources on the internet that servers can connect to;
 
-
-![An illustration of MCP session](mcp_session.png)
+<img src="mcp_session.png" alt="An illustration of MCP session" style="zoom:67%;" />
 
 ## MCP Server
 
@@ -428,7 +427,7 @@ Claude Desktop hosts an pre-built MCP Client. In other words, Claude Desktop can
 
 After restarting Claude Desktop, we should be able to see a tool 🔨 icon appearing in the input box.
 
-![Claude Desktop with MCP tools available](mcp_claude_demo.png)
+<img src="mcp_claude_demo.png" alt="Claude Desktop with MCP tools available" style="zoom:67%;" />
 
 ### Custom Client
 

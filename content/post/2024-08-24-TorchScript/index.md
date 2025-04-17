@@ -242,4 +242,7 @@ assert allclose(traced_model(input2), my_model(input2))
 
 ### Reference
 
-[1] Yuxin Wu's Blog: [TorchScript: Tracing vs. Scripting](https://ppwwyyxx.com/blog/2022/TorchScript-Tracing-vs-Scripting/)
+[1] PyTorch Official Tutoiral: [Introduction to TorchScript](https://pytorch.org/tutorials/beginner/Intro_to_TorchScript_tutorial.html)
+
+[2] Yuxin Wu's Blog: [TorchScript: Tracing vs. Scripting](https://ppwwyyxx.com/blog/2022/TorchScript-Tracing-vs-Scripting/)
+

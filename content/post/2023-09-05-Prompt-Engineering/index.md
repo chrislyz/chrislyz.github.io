@@ -18,7 +18,7 @@ In order to introduce the diversity, current Large Language Models (LLMs) sample
 
 [1] discovered beam search (i.e., an approximation approach of MAP) results in a different distribution than human during decoding text demonstrated in the below figure.
 
-![Perplexity of Beam Search vs. Human](beam_search_perplexity.png)
+<img src="beam_search_perplexity.png" alt="Perplexity of Beam Search vs. Human" style="zoom:80%;" />
 
 The paper introduced Nucleus Sampling to fix the problem. Randomness participates in the result by dynamically sampling from the top-$p$ portion of the probability mass in the candidate pool rather than the fixed top-$k$ tokens. In other words, the diversity of the results is dependent on the result distribution of softmax.
 

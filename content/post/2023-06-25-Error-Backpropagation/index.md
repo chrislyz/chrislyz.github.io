@@ -27,7 +27,7 @@ $$
 > [!note]
 > Please note that $z_k^{(L)}$ generalizes the relationship in which any neuron in $(L)$ layer is connected to the $j\text{-th}$ neuron in $(L-1)$ layer.
 
-![]({{site.baseurl}}/assets/media/Pasted image 20230810140946.png)
+<img src="backprop_1.png" style="zoom:67%;" />
 
 In the feedforward process, we have a weighted sum $a_k$ and the output of an activated neuron $z_k$,
 
@@ -97,8 +97,7 @@ Likewise, the derivative of the loss function in layer $(L-1)$ with respect to w
 
 $$
 \begin{align}
-\nabla\mathcal{E}&=\dfrac{\partial\mathcal{E}}{\partial z_k}\dfrac{\partial z_k}{\partial a_k}\dfrac{\partial a_k}{\partial z_j}\dfrac{\partial z_j}{\partial a_j}\dfrac{\partial a_j}{\partial w_{ji}}\\
-
+\nabla\mathcal{E}&=\frac{\partial\mathcal{E}}{\partial z_k}\frac{\partial z_k}{\partial a_k}\frac{\partial a_k}{\partial z_j}\frac{\partial z_j}{\partial a_j}\frac{\partial a_j}{\partial w_{ji}}\\
 \end{align}
 $$
 
@@ -106,7 +105,8 @@ $$
 The derivative can be computed all the way back to the first hidden layer. in a way that gradients of each layer is flowing backwards.
 
 A tree shows the computational structure of each layer [2].
-![]({{site.baseurl}}/assets/media/Pasted image 20230810145453.png)
+
+<p align="center"><img src="backprop_2.png" style="zoom: 50%;" /></p>
 
 ## Reference
 
